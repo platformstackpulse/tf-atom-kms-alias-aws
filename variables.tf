@@ -1,7 +1,8 @@
-# -----------------------------------------------------------------------------
-# Module-Specific Variables
-#
-# Note: Standard labeling variables (enabled, namespace, tenant, environment,
-# stage, name, delimiter, attributes, tags, label_order, etc.) are provided
-# by context.tf via the tf-label module.
-# -----------------------------------------------------------------------------
+variable "target_key_id" {
+  description = "ID or ARN of the KMS key to create an alias for"
+  type        = string
+  validation {
+    condition     = length(var.target_key_id) > 0
+    error_message = "target_key_id must not be empty."
+  }
+}
